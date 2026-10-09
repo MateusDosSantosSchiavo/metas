@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Meta: Factor 2019 + 3 meses de aluguel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EDEFF2;--surface:#FFFFFF;--ink:#14181F;--muted:#5B6472;--line:#D5D9E0;--road:#2A2E35;--moto:#1F4FD8;--rent:#17825D;--bad:#B3361B;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12151A;--surface:#1B2027;--ink:#EEF1F5;--muted:#9AA3B0;--line:#2C333D;--road:#0B0D10;--moto:#6C93FF;--rent:#3CC196;--bad:#FF8F73}}
+:root[data-theme="dark"]{--bg:#12151A;--surface:#1B2027;--ink:#EEF1F5;--muted:#9AA3B0;--line:#2C333D;--road:#0B0D10;--moto:#6C93FF;--rent:#3CC196;--bad:#FF8F73}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 Barlow,"Segoe UI",system-ui,sans-serif}
+main{max-width:760px;margin:0 auto;padding:24px 16px 48px}
+h1,h2,.big{font-family:"Barlow Semi Condensed","Arial Narrow",Barlow,sans-serif;letter-spacing:.01em}
+h1{font-size:2rem;line-height:1.1;margin:0 0 6px}
+h2{font-size:1.25rem;margin:0}
+.sub{color:var(--muted);margin:0 0 20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+label{display:block;font-weight:500;font-size:.9rem;margin-bottom:4px}
+.field{position:relative}
+input,select{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:10px 12px}
+input:focus-visible,select:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--moto);outline-offset:2px}
+.hint{font-size:.8rem;color:var(--muted);margin-top:3px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center}
+.chips span{font-size:.9rem;color:var(--muted)}
+button.chip{font:inherit;font-weight:500;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer}
+button.chip:hover{border-color:var(--moto)}
+.goal{margin-bottom:22px}
+.goal:last-child{margin-bottom:0}
+.head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.pct{font-family:"Barlow Semi Condensed",sans-serif;font-weight:700;font-size:1.5rem}
+.road{position:relative;height:30px;background:var(--road);border-radius:6px;overflow:hidden}
+.fill{position:absolute;inset:0 auto 0 0;width:0;background:var(--c);transition:width .35s ease}
+.road::after{content:"";position:absolute;left:0;right:0;top:50%;height:3px;transform:translateY(-50%);background:repeating-linear-gradient(90deg,rgba(255,255,255,.85) 0 14px,transparent 14px 28px)}
+.rider{position:absolute;top:50%;font-size:22px;line-height:1;transform:translate(-50%,-50%) scaleX(-1);transition:left .35s ease;z-index:2;filter:drop-shadow(0 1px 1px rgba(0,0,0,.6))}
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:12px}
+.nums div{border-left:3px solid var(--c);padding-left:10px}
+.nums small{display:block;color:var(--muted);font-size:.8rem}
+.nums b{font-family:"Barlow Semi Condensed",sans-serif;font-size:1.3rem}
+.eta{margin-top:10px;font-size:.95rem}
+.eta strong{font-weight:600}
+.total{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.total .big{font-size:2rem;font-weight:700}
+.bad{color:var(--bad)}
+table{width:100%;border-collapse:collapse;font-size:.92rem;margin-top:10px}
+th,td{text-align:right;padding:6px 8px;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+th{font-weight:600;color:var(--muted)}
+summary{cursor:pointer;font-weight:600}
+.note{font-size:.85rem;color:var(--muted)}
+.scroll{overflow-x:auto}
+@media (prefers-reduced-motion:reduce){.fill,.rider{transition:none}}
+</style>
+</head>
+<body>
+<main>
+<h1>Meta da Factor 2019</h1>
+<p class="sub">Mude os valores e veja quanto falta para a moto e para os 3 meses de aluguel.</p>
+
+<section class="card" aria-label="Seus valores">
+<div class="grid">
+<div class="field"><label for="saved">Já guardado hoje (R$)</label><input id="saved" type="number" inputmode="decimal" min="0" step="50" value="0"></div>
+<div class="field"><label for="aporte">Quanto guardo por mês (R$)</label><input id="aporte" type="number" inputmode="decimal" min="0" step="50" value="800"></div>
+<div class="field"><label for="rate">Rendimento ao mês (%)</label><input id="rate" type="number" inputmode="decimal" min="0" step="0.05" value="0.7"><div class="hint">Ajuste para onde você guarda.</div></div>
+</div>
+<div class="grid" style="margin-top:14px">
+<div class="field"><label for="moto">Valor da moto (R$)</label><input id="moto" type="number" inputmode="decimal" min="0" step="100" value="12000"></div>
+<div class="field"><label for="aluguel">Aluguel por mês (R$)</label><input id="aluguel" type="number" inputmode="decimal" min="0" step="50" value="800"><div class="hint">A meta usa 3 meses.</div></div>
+<div class="field"><label for="prio">O que juntar primeiro</label><select id="prio"><option value="moto">Moto primeiro</option><option value="rent">Aluguel primeiro</option></select></div>
+</div>
+<div class="chips" role="group" aria-label="Atalhos de valor guardado por mês"><span>Guardar por mês:</span>
+<button class="chip" data-v="300">R$ 300</button><button class="chip" data-v="500">R$ 500</button><button class="chip" data-v="800">R$ 800</button><button class="chip" data-v="1000">R$ 1.000</button><button class="chip" data-v="1500">R$ 1.500</button></div>
+</section>
+
+<section class="card" aria-label="Progresso">
+<div class="goal" style="--c:var(--moto)">
+<div class="head"><h2>Moto Factor 2019</h2><span class="pct" id="pm">0%</span></div>
+<div class="road"><div class="fill" id="fm"></div><div class="rider" id="rm" aria-hidden="true">🏍️</div></div>
+<div class="nums"><div><small>Já separado</small><b id="hm"></b></div><div><small>Falta</small><b id="lm"></b></div><div><small>Meta</small><b id="gm"></b></div></div>
+<div class="eta" id="em"></div>
+</div>
+<div class="goal" style="--c:var(--rent)">
+<div class="head"><h2>3 meses de aluguel</h2><span class="pct" id="pr">0%</span></div>
+<div class="road"><div class="fill" id="fr"></div></div>
+<div class="nums"><div><small>Já separado</small><b id="hr"></b></div><div><small>Falta</small><b id="lr"></b></div><div><small>Meta</small><b id="gr"></b></div></div>
+<div class="eta" id="er"></div>
+</div>
+</section>
+
+<section class="card" aria-label="Total">
+<div class="total"><div><div class="note">Falta no total (moto + aluguel)</div><div class="big" id="lt"></div></div><div class="note" id="tt"></div></div>
+</section>
+
+<section class="card">
+<details><summary>Os próximos 12 meses</summary>
+<div class="scroll"><table><thead><tr><th>Mês</th><th>Saldo</th><th>Da meta total</th></tr></thead><tbody id="rows"></tbody></table></div>
+</details>
+</section>
+
+<p class="note">Não inclui a CNH A (estimativa de R$ 1.200 a R$ 2.500) nem capacete, jaqueta, luvas e capa de chuva (estimativa de R$ 900 a R$ 1.700). O rendimento é uma simulação e o saldo real pode variar.</p>
+</main>
+<script>
+const $=id=>document.getElementById(id),KEY='meta-factor-v1';
+const brl=n=>n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const num=id=>{const v=parseFloat(String($(id).value).replace(',','.'));return isFinite(v)&&v>0?v:0};
+const ids=['saved','aporte','rate','moto','aluguel','prio'];
+function sim(start,ap,r,target){if(start>=target)return 0;let b=start;for(let m=1;m<=600;m++){b=b*(1+r)+ap;if(b>=target)return m}return null}
+function eta(m){if(m===null)return 'Não chega com esses valores. Aumente o que guarda por mês.';if(m===0)return '<strong>Meta atingida.</strong>';
+const y=Math.floor(m/12),mm=m%12,p=[];if(y)p.push(y+(y>1?' anos':' ano'));if(mm)p.push(mm+(mm>1?' meses':' mês'));
+const d=new Date();d.setMonth(d.getMonth()+m);return 'Chega em <strong>'+p.join(' e ')+'</strong>, por volta de '+d.toLocaleDateString('pt-BR',{month:'long',year:'numeric'})+'.'}
+function bar(f,pc,pct){$(f).style.width=pct+'%';$(pc).parentElement.parentElement.querySelector('.road').setAttribute('role','progressbar');}
+function render(){
+const saved=num('saved'),ap=num('aporte'),r=num('rate')/100,moto=num('moto'),rent=num('aluguel')*3,first=$('prio').value,total=moto+rent;
+let am,ar;if(first==='moto'){am=Math.min(saved,moto);ar=Math.min(Math.max(saved-am,0),rent)}else{ar=Math.min(saved,rent);am=Math.min(Math.max(saved-ar,0),moto)}
+const pm=moto?am/moto*100:100,pr=rent?ar/rent*100:100;
+$('fm').style.width=pm+'%';$('rm').style.left=Math.min(Math.max(pm,4),96)+'%';$('fr').style.width=pr+'%';
+$('pm').textContent=Math.floor(pm)+'%';$('pr').textContent=Math.floor(pr)+'%';
+$('hm').textContent=brl(am);$('lm').textContent=brl(moto-am);$('gm').textContent=brl(moto);
+$('hr').textContent=brl(ar);$('lr').textContent=brl(rent-ar);$('gr').textContent=brl(rent);
+$('em').innerHTML=eta(sim(saved,ap,r,first==='moto'?moto:total));
+$('er').innerHTML=eta(sim(saved,ap,r,first==='rent'?rent:total));
+const left=Math.max(total-saved,0);$('lt').textContent=brl(left);
+$('tt').textContent=left?('Você já tem '+brl(Math.min(saved,total))+' de '+brl(total)+'.'):'Tudo pronto.';
+const bar=[$('fm').parentElement,$('fr').parentElement];
+[[bar[0],pm,'Progresso da moto'],[bar[1],pr,'Progresso do aluguel']].forEach(([el,p,l])=>{el.setAttribute('role','progressbar');el.setAttribute('aria-label',l);el.setAttribute('aria-valuemin','0');el.setAttribute('aria-valuemax','100');el.setAttribute('aria-valuenow',Math.round(p))});
+let b=saved,h='';for(let m=1;m<=12;m++){b=b*(1+r)+ap;h+='<tr><td>Mês '+m+'</td><td>'+brl(b)+'</td><td>'+(total?Math.min(b/total*100,100).toFixed(0):100)+'%</td></tr>'}
+$('rows').innerHTML=h;
+try{localStorage.setItem(KEY,JSON.stringify(Object.fromEntries(ids.map(i=>[i,$(i).value]))))}catch(e){}
+}
+try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s)ids.forEach(i=>{if(s[i]!==undefined)$(i).value=s[i]})}catch(e){}
+ids.forEach(i=>$(i).addEventListener('input',render));
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{$('aporte').value=c.dataset.v;render()}));
+render();
+</script>
+</body>
+</html>
