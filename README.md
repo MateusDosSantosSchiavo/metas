@@ -13,3 +13,6 @@ Abra o `index.html` no navegador, ou acesse a versão publicada no GitHub Pages.
 - Os valores ficam salvos apenas no navegador de quem usa a página.
 - O rendimento é uma simulação, o saldo real pode variar.
 - A meta não inclui CNH nem equipamentos de segurança.
+## link 
+
+https://mateusdossantosschiavo.github.io/metas/
